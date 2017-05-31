@@ -13,7 +13,7 @@ Authentication and Authorization) service and a Timeseries service. I found the
 following Predix tutorials helpful:
 
 1. `Build a basic application: Introduction and Installer <https://www.predix.io/resources/tutorials/tutorial-details.html?tutorial_id=1580>`_.
-   You should not need the Java dependencies (JDK and Maven) since we are using
+   You should not need the Java dependencies (JDK and Maven), since we are using
    Python instead.
 2. `Exploring Application Security: Configure UAA for user authentication <https://www.predix.io/resources/tutorials/tutorial-details.html?tutorial_id=1544>`_.
    Rather than use the ``cf login`` command, I found it easier to use the
@@ -22,12 +22,26 @@ following Predix tutorials helpful:
    region, username, and password rather than requiring that you figure out the
    endpoint yourself.
 3. `Exploring Application Security: Create a Predix Service and set up a UAA ClientId <https://www.predix.io/resources/tutorials/tutorial-details.html?tutorial_id=1549>`_.
-   Be sure to to add the zone token scopes, as described in step 9.
+   It appears that you need to have a Cloud Foundry application pushed up to Predix
+   and configured with permissions to the Time Series service, even though we
+   will not be using the actual application. The step
+   "Find the application to bind to" describes how to push up the
+   ``predix-nodejs-starter`` application, which will satisfy this requirement.
+   One other comment: be sure to to add the zone token scopes, as described in
+   step 9.
 4. `Exploring Time Series: Introduction to the Time Series API <https://www.predix.io/resources/tutorials/tutorial-details.html?tutorial_id=1556>`_.
    You can get your Predix Zone Id by running the ``px service-info`` comand.
    The Zone Id is the value of the field ``zone-http-header-value``. I highly
    recommend testing the Timeseries API via the Predix Toolkit web UI before
    running the Python script.
+
+Python Dependencies
+-------------------
+The script is for Python 3, so you will need a Python 3 install, version 3.4 or
+later. You will also need the ``websocket-client`` and ``requests`` packages.
+You can install them via pip as follows::
+
+  pip3 install websocket-client requests
 
 
 Usage
@@ -153,3 +167,5 @@ run and its output::
     }
     Test successful.  
 
+
+Copyright 2017 by Jeff Fischer.
