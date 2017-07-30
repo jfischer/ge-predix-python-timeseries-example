@@ -33,7 +33,15 @@ following Predix tutorials helpful:
    You can get your Predix Zone Id by running the ``px service-info`` comand.
    The Zone Id is the value of the field ``zone-http-header-value``. I highly
    recommend testing the Timeseries API via the Predix Toolkit web UI before
-   running the Python script.
+   running the Python script.[#]_
+
+..[#] Update: I ran into an issue with the Zone Id returned by ``px service info``.
+      Apparently, the token had expired and the Zone Id was no longer valid.
+      I was unable to get the token to be renewed from the Command Line
+      Interface. I was able to get things working by extracting the Zone Id from
+      the scope names, as described in
+      `this <http://forum.predix.io/questions/3290/timeseries-401-unauthorized.html>`__
+      Predix Forum question (see the response by Beth).
 
 Python Dependencies
 -------------------
